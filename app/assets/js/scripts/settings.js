@@ -423,9 +423,17 @@ function populateAuthAccounts(){
 
     authKeys.map((val) => {
         const acc = authAccounts[val]
+        var skin_uuid;
+
+        if(acc.uuid.startsWith("nope_")){
+            skin_uuid = "8667ba71b85a4004af54457a9734eed7";
+        }else{
+            skin_uuid = acc.uuid;
+        }
+
         authAccountStr += `<div class="settingsAuthAccount" uuid="${acc.uuid}">
             <div class="settingsAuthAccountLeft">
-                <img class="settingsAuthAccountImage" alt="${acc.displayName}" src="https://crafatar.com/renders/body/${acc.uuid}?scale=3&default=MHF_Steve&overlay">
+                <img class="settingsAuthAccountImage" alt="${acc.displayName}" src="https://crafatar.com/renders/body/${skin_uuid}?scale=3&default=MHF_Steve&overlay">
             </div>
             <div class="settingsAuthAccountRight">
                 <div class="settingsAuthAccountDetails">
@@ -607,15 +615,17 @@ function saveModConfiguration(){
 function _saveModConfiguration(modConf){
     for(let m of Object.entries(modConf)){
         const tSwitch = settingsModsContainer.querySelectorAll(`[formod='${m[0]}']`)
-        if(!tSwitch[0].hasAttribute('dropin')){
-            if(typeof m[1] === 'boolean'){
-                modConf[m[0]] = tSwitch[0].checked
-            } else {
-                if(m[1] != null){
-                    if(tSwitch.length > 0){
-                        modConf[m[0]].value = tSwitch[0].checked
+        if(tSwitch[0] != null){
+            if(!tSwitch[0].hasAttribute('dropin')){
+                if(typeof m[1] === 'boolean'){
+                    modConf[m[0]] = tSwitch[0].checked
+                } else {
+                    if(m[1] != null){
+                        if(tSwitch.length > 0){
+                            modConf[m[0]].value = tSwitch[0].checked
+                        }
+                        modConf[m[0]].mods = _saveModConfiguration(modConf[m[0]].mods)
                     }
-                    modConf[m[0]].mods = _saveModConfiguration(modConf[m[0]].mods)
                 }
             }
         }

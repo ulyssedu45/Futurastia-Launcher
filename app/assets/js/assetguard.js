@@ -963,6 +963,12 @@ class AssetGuard extends EventEmitter {
             }
             let buf = fs.readFileSync(filePath)
             let calcdhash = AssetGuard._calculateHash(buf, algo)
+            if(!(calcdhash === hash.toLowerCase())){
+                console.log(filePath);
+                console.log(calcdhash);
+                console.log(hash.toLowerCase());
+            }
+            
             return calcdhash === hash.toLowerCase()
         }
         return false

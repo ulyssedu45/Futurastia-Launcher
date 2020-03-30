@@ -129,8 +129,10 @@ function updateSelectedAccount(authUser){
         if(authUser.displayName != null){
             username = authUser.displayName
         }
-        if(authUser.uuid != null){
+        if(authUser.uuid != null && !authUser.uuid.startsWith("nope_")){
             document.getElementById('avatarContainer').style.backgroundImage = `url('https://crafatar.com/renders/body/${authUser.uuid}')`
+        }else if(authUser.uuid != null && authUser.uuid.startsWith("nope_")){
+            document.getElementById('avatarContainer').style.backgroundImage = `url('https://crafatar.com/renders/body/8667ba71b85a4004af54457a9734eed7')`
         }
     }
     user_text.innerHTML = username

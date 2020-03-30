@@ -14,7 +14,7 @@ logger.log('Chargement..')
 ConfigManager.load()
 
 // Load Strings
-LangLoader.loadLanguage('fr_Fr')
+LangLoader.loadLanguage('en_US')
 
 function onDistroLoad(data){
     if(data != null){
