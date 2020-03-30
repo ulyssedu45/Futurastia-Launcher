@@ -39,7 +39,7 @@ class ProcessBuilder {
         const tempNativePath = path.join(os.tmpdir(), ConfigManager.getTempNativeFolder(), crypto.pseudoRandomBytes(16).toString('hex'))
         process.throwDeprecation = true
         this.setupLiteLoader()
-        logger.log('Using liteloader:', this.usingLiteLoader)
+        logger.log('Utilisation de liteloader:', this.usingLiteLoader)
         const modObj = this.resolveModConfiguration(ConfigManager.getModConfiguration(this.server.getID()).mods, this.server.getModules())
         
         // Mod list below 1.13
@@ -57,7 +57,7 @@ class ProcessBuilder {
             args = args.concat(this.constructModArguments(modObj.fMods))
         }
 
-        logger.log('Launch Arguments:', args)
+        logger.log('Arguments de lancement:', args)
 
         const child = child_process.spawn(ConfigManager.getJavaExecutable(), args, {
             cwd: this.gameDir,
@@ -81,12 +81,12 @@ class ProcessBuilder {
             loggerMCstderr.log(data)
         })
         child.on('close', (code, signal) => {
-            logger.log('Exited with code', code)
+            logger.log('Quitté avec le code', code)
             fs.remove(tempNativePath, (err) => {
                 if(err){
-                    logger.warn('Error while deleting temp dir', err)
+                    logger.warn('Erreur lors de la suppression du répertoire temporaire', err)
                 } else {
-                    logger.log('Temp dir deleted successfully.')
+                    logger.log('Le répertoire temporaire a bien été supprimé.')
                 }
             })
         })
@@ -162,6 +162,10 @@ class ProcessBuilder {
                 const e = ProcessBuilder.isModEnabled(modCfg[mdl.getVersionlessID()], mdl.getRequired())
                 if(!o || (o && e)){
                     if(mdl.hasSubModules()){
+                        console.log(mdl.getVersionlessID());
+                        console.log(modCfg[mdl.getVersionlessID()]);
+                        console.log(modCfg);
+                       
                         const v = this.resolveModConfiguration(modCfg[mdl.getVersionlessID()].mods, mdl.getSubModules())
                         fMods = fMods.concat(v.fMods)
                         lMods = lMods.concat(v.lMods)
@@ -305,7 +309,7 @@ class ProcessBuilder {
 
         // Java Arguments
         if(process.platform === 'darwin'){
-            args.push('-Xdock:name=HeliosLauncher')
+            args.push('-Xdock:name=FuturastiaLauncher')
             args.push('-Xdock:icon=' + path.join(__dirname, '..', 'images', 'minecraft.icns'))
         }
         args.push('-Xmx' + ConfigManager.getMaxRAM())
@@ -343,7 +347,7 @@ class ProcessBuilder {
 
         // Java Arguments
         if(process.platform === 'darwin'){
-            args.push('-Xdock:name=HeliosLauncher')
+            args.push('-Xdock:name=FuturastiaLauncher')
             args.push('-Xdock:icon=' + path.join(__dirname, '..', 'images', 'minecraft.icns'))
         }
         args.push('-Xmx' + ConfigManager.getMaxRAM())
@@ -445,7 +449,7 @@ class ProcessBuilder {
                             val = args[i].replace(argDiscovery, tempNativePath)
                             break
                         case 'launcher_name':
-                            val = args[i].replace(argDiscovery, 'Helios-Launcher')
+                            val = args[i].replace(argDiscovery, 'Futurastia-Launcher')
                             break
                         case 'launcher_version':
                             val = args[i].replace(argDiscovery, this.launcherVersion)
@@ -675,7 +679,7 @@ class ProcessBuilder {
                         if(!shouldExclude){
                             fs.writeFile(path.join(tempNativePath, fileName), zipEntries[i].getData(), (err) => {
                                 if(err){
-                                    logger.error('Error while extracting native library:', err)
+                                    logger.error('Erreur lors de l\'extraction de la bibliothèque native:', err)
                                 }
                             })
                         }

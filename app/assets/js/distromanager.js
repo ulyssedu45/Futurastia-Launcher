@@ -170,7 +170,7 @@ class Module {
 
         } catch (err) {
             // Improper identifier
-            logger.error('Improper ID for module', this.identifier, err)
+            logger.error('ID incorrect pour le module', this.identifier, err)
         }
     }
 
@@ -537,7 +537,7 @@ exports.pullRemote = function(){
         return exports.pullLocal()
     }
     return new Promise((resolve, reject) => {
-        const distroURL = 'http://mc.westeroscraft.com/WesterosCraftLauncher/distribution.json'
+        const distroURL = 'https://download.futurastia.fr/FuturastiaLauncher/distribution.json'
         //const distroURL = 'https://gist.githubusercontent.com/dscalzi/53b1ba7a11d26a5c353f9d5ae484b71b/raw/'
         const opts = {
             url: distroURL,
@@ -585,10 +585,10 @@ exports.pullLocal = function(){
 
 exports.setDevMode = function(value){
     if(value){
-        logger.log('Developer mode enabled.')
-        logger.log('If you don\'t know what that means, revert immediately.')
+        logger.log('Mode développeur activé.')
+        logger.log('Si vous ne savez pas ce que cela signifie, revenez immédiatement.')
     } else {
-        logger.log('Developer mode disabled.')
+        logger.log('Mode développeur désactivé.')
     }
     DEV_MODE = value
 }

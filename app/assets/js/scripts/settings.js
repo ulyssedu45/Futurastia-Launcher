@@ -286,7 +286,7 @@ settingsNavDone.onclick = () => {
     saveSettingsValues()
     saveModConfiguration()
     ConfigManager.save()
-    saveDropinModConfiguration()
+    //saveDropinModConfiguration()
     saveShaderpackSettings()
     switchView(getCurrentView(), VIEWS.landing)
 }
@@ -495,7 +495,7 @@ function resolveModsForUI(){
 
     const modStr = parseModulesForUI(distro.getServer(serv).getModules(), false, servConf.mods)
 
-    document.getElementById('settingsReqModsContent').innerHTML = modStr.reqMods
+    //document.getElementById('settingsReqModsContent').innerHTML = modStr.reqMods
     document.getElementById('settingsOptModsContent').innerHTML = modStr.optMods
 }
 
@@ -633,7 +633,7 @@ let CACHE_DROPIN_MODS
  * populate the results onto the UI.
  */
 function resolveDropinModsForUI(){
-    const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
+    /*const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
     CACHE_SETTINGS_MODS_DIR = path.join(ConfigManager.getInstanceDirectory(), serv.getID(), 'mods')
     CACHE_DROPIN_MODS = DropinModUtil.scanForDropinMods(CACHE_SETTINGS_MODS_DIR, serv.getMinecraftVersion())
 
@@ -659,7 +659,7 @@ function resolveDropinModsForUI(){
                 </div>`
     }
 
-    document.getElementById('settingsDropinModsContent').innerHTML = dropinMods
+    document.getElementById('settingsDropinModsContent').innerHTML = dropinMods*/
 }
 
 /**
@@ -691,7 +691,7 @@ function bindDropinModsRemoveButton(){
  * server configuration.
  */
 function bindDropinModFileSystemButton(){
-    const fsBtn = document.getElementById('settingsDropinFileSystemButton')
+    /*const fsBtn = document.getElementById('settingsDropinFileSystemButton')
     fsBtn.onclick = () => {
         DropinModUtil.validateDir(CACHE_SETTINGS_MODS_DIR)
         shell.openItem(CACHE_SETTINGS_MODS_DIR)
@@ -714,7 +714,7 @@ function bindDropinModFileSystemButton(){
 
         DropinModUtil.addDropinMods(e.dataTransfer.files, CACHE_SETTINGS_MODS_DIR)
         reloadDropinMods()
-    }
+    }*/
 }
 
 /**
@@ -756,10 +756,10 @@ document.addEventListener('keydown', (e) => {
 })
 
 function reloadDropinMods(){
-    resolveDropinModsForUI()
+    /*resolveDropinModsForUI()
     bindDropinModsRemoveButton()
     bindDropinModFileSystemButton()
-    bindModsToggleSwitch()
+    bindModsToggleSwitch()*/
 }
 
 // Shaderpack

@@ -1,7 +1,7 @@
 {
-  "name": "helioslauncher",
-  "version": "1.7.0",
-  "productName": "Helios Launcher",
+  "name": "futurastialauncher",
+  "version": "0.0.1",
+  "productName": "Futurastia Launcher",
   "description": "Modded Minecraft Launcher",
   "author": "Daniel Scalzi (https://github.com/dscalzi/)",
   "license": "UNLICENSED",
@@ -41,12 +41,12 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
-    "electron": "^8.1.1",
+    "electron": "^8.2.0",
     "electron-builder": "^22.4.0",
     "eslint": "^6.8.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dscalzi/HeliosLauncher.git"
+    "url": "git+https://github.com/ulyssedu45/Futurastia-Launcher.git"
   }
 }

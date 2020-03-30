@@ -96,8 +96,8 @@ exports.status = function(){
             function(error, response, body){
 
                 if(error || response.statusCode !== 200){
-                    logger.warn('Unable to retrieve Mojang status.')
-                    logger.debug('Error while retrieving Mojang statuses:', error)
+                    logger.warn('Impossible de récupérer le statut Mojang.')
+                    logger.debug('Erreur lors de la récupération des statuts Mojang:', error)
                     //reject(error || response.statusCode)
                     for(let i=0; i<statuses.length; i++){
                         statuses[i].status = 'grey'
@@ -151,7 +151,7 @@ exports.authenticate = function(username, password, clientToken, requestUser = t
             },
             function(error, response, body){
                 if(error){
-                    logger.error('Error during authentication.', error)
+                    logger.error('Erreur lors de l\'authentification.', error)
                     reject(error)
                 } else {
                     if(response.statusCode === 200){
@@ -185,7 +185,7 @@ exports.validate = function(accessToken, clientToken){
             },
             function(error, response, body){
                 if(error){
-                    logger.error('Error during validation.', error)
+                    logger.error('Erreur lors de la validation.', error)
                     reject(error)
                 } else {
                     if(response.statusCode === 403){
@@ -220,7 +220,7 @@ exports.invalidate = function(accessToken, clientToken){
             },
             function(error, response, body){
                 if(error){
-                    logger.error('Error during invalidation.', error)
+                    logger.error('Erreur lors de l\'invalidation.', error)
                     reject(error)
                 } else {
                     if(response.statusCode === 204){
@@ -257,7 +257,7 @@ exports.refresh = function(accessToken, clientToken, requestUser = true){
             },
             function(error, response, body){
                 if(error){
-                    logger.error('Error during refresh.', error)
+                    logger.error('Erreur lors de l\'actualisation.', error)
                     reject(error)
                 } else {
                     if(response.statusCode === 200){
