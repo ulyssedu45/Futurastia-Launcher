@@ -19,7 +19,7 @@ builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
         appId: 'Futurastialauncher',
-        productName: 'Futurastia Launcher',
+        productName: 'Futurastia-Launcher',
         artifactName: '${productName}.${ext}',
         copyright: 'Helios Launcher Copyright © 2018-2020 Daniel Scalzi & Futurastia Launcher Copyright © 2020',
         directories: {
