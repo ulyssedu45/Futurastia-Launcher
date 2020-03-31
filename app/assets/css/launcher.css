@@ -596,9 +596,9 @@ body, button {
 
 /* Container which contains the forgot and remember options. */
 #loginOptions {
-    display: flex;
+    /*display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 100%;*/
 }
 
 /* Remember option text. */
@@ -785,7 +785,7 @@ body, button {
 
 /* Disclaimer text styles. */
 .loginDisclaimerText {
-    font-size: 7px;
+    font-size: 9px;
     color: #848484;
     font-weight: bold;
     text-align: center;
@@ -978,7 +978,7 @@ body, button {
 
 /* Settings navigational divider. */
 .settingsNavDivider {
-    width: 75%;
+    width: 100%;
     height: 1px;
     background: rgba(126, 126, 126, 0.57);
     margin-left: auto;
